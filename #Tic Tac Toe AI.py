@@ -1,3 +1,5 @@
+#tic tac toe with AI
+#Using git hub
 def main():
     print('Tic Tac Toe!')
     printBoard(board)
@@ -26,7 +28,9 @@ def main():
     if isBoardFull(board):
         print('Tie Game!')
 
-    
+
+
+
 board = [' ' for x in range(9)]
 
 def insertLetter(letter, pos):

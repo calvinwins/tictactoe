@@ -1,5 +1,5 @@
-# Calvin Weaver
-# Tic tac toe
+
+# Tic tac simple
 # using git
 def main():
     board = new_board()
@@ -15,7 +15,7 @@ def main():
 def new_board():
     board = []
     for square in range(9):
-        board.append(square + 1)
+        board.append(square + 2)
     return board
 
 def draw(board):
