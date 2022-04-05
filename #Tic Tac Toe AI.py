@@ -54,12 +54,13 @@ def isWinner(val, le):
             val[0] == le and val[3] == le and val[6] == le or
             val[1] == le and val[4] == le and val[7] == le or
             val[2] == le and val[5] == le and val[8] == le or
-            val[0] == le and val[4] == le and val[8] == le)
+            val[0] == le and val[4] == le and val[8] == le or
+            val[2] == le and val[4] == le and val[6] == le)
 
 def playerMove():
     play = True
     while play:
-        move = input('Please select a position to place an \'X\' (0-8): ')
+        move = input('Please choose a position to place an \'X\' (0-8): ')
         try:
             move = int(move)
             if move > -1 and move < 9:
@@ -67,7 +68,7 @@ def playerMove():
                     play = False
                     insertLetter('X', move)
                 else:
-                    print('Sorry, this space is occupied!')
+                    print('Sorry, this space is full!')
             else:
                 print('Please type a number within the range!')
         except:
@@ -75,41 +76,41 @@ def playerMove():
             
 
 def compMove():
-    possibleMoves = [x for x, letter in enumerate(board) if letter == ' ' and x != 0]
+    possMoves = [x for x, letter in enumerate(board) if letter == ' ' and x != 0]
     move = 0
 
     for let in ['O', 'X']:
-        for i in possibleMoves:
+        for i in possMoves:
             boardCopy = board[:]
             boardCopy[i] = let
             if isWinner(boardCopy, let):
                 move = i
                 return move
 
-    cornersOpen = []
-    for i in possibleMoves:
+    cornOpen = []
+    for i in possMoves:
         if i in [0,2,6,8]:
-            cornersOpen.append(i)
+            cornOpen.append(i)
             
-    if len(cornersOpen) > 0:
-        move = selectRandom(cornersOpen)
+    if len(cornOpen) > 0:
+        move = chooseRandom(cornOpen)
         return move
 
-    if 5 in possibleMoves:
+    if 5 in possMoves:
         move = 5
         return move
 
-    edgesOpen = []
-    for i in possibleMoves:
+    edgeOpen = []
+    for i in possMoves:
         if i in [1,3,5,7]:
-            edgesOpen.append(i)
+            edgeOpen.append(i)
             
-    if len(edgesOpen) > 0:
-        move = selectRandom(edgesOpen)
+    if len(edgeOpen) > 0:
+        move = chooseRandom(edgeOpen)
         
     return move
 
-def selectRandom(li):
+def chooseRandom(li):
     import random
     ln = len(li)
     r = random.randrange(0,ln)
