@@ -1,5 +1,9 @@
 #tic tac toe with AI
 #Using git hub
+#Contributors
+#Calvin Weaver
+#Ryan Hennessy
+#Erik Foutz
 #main function to start Tic tac toe program
 def main():
     print('Tic Tac Toe!')
